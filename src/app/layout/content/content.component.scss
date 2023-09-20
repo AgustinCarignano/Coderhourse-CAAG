@@ -1,0 +1,28 @@
+h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 400px;
+    align-items: center;
+    border: solid 1px #fff;
+    border-radius: 5px;
+    & > img {
+      width: 100%;
+    }
+    & p {
+      padding: 20px;
+      text-align: center;
+    }
+  }
+}
