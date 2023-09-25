@@ -1,0 +1,4 @@
+<h2>Alumnos</h2>
+<ul>
+    <li [ngClass]="getClass(alumno.fechaNacimiento)" *ngFor="let alumno of alumnos">{{alumno.nombre}} {{alumno.apellido|uppercase}} - {{alumno.mail}} - fecha de nacimiento:{{alumno.fechaNacimiento|date:"dd/MM/yy"}}</li>
+</ul>
