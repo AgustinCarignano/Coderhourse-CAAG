@@ -1,0 +1,295 @@
+<div class="mx-auto my-5 container">
+  <h2 class="mb-4">User registration</h2>
+  <form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <section class="p-3 row g-3" formGroupName="personalUserForm">
+      <h3>Personal data</h3>
+      <div class="col-md-4">
+        <label for="first_name" class="form-label">First name</label>
+        <input
+          formControlName="firstName"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'firstName')
+          }"
+          id="first_name"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'firstName')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="last_name" class="form-label">Last name</label>
+        <input
+          formControlName="lastName"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'lastName')
+          }"
+          id="last_name"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'lastName')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="birthdate" class="form-label">Birthdate</label>
+        <input
+          formControlName="birthDate"
+          type="date"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'birthDate')
+          }"
+          id="birthdate"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'birthDate')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-4">
+        <label for="dni" class="form-label">DNI</label>
+        <input
+          formControlName="dni"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'dni')
+          }"
+          id="dni"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'dni')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-4">
+        <label for="email" class="form-label">Email</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'email')
+          }"
+          id="email"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'email')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-4">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input
+          formControlName="phoneNumber"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'phoneNumber')
+          }"
+          id="phoneNumber"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'phoneNumber')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="country" class="form-label">Country</label>
+        <input
+          formControlName="country"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'country')
+          }"
+          id="country"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'country')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="province" class="form-label">Province</label>
+        <input
+          formControlName="province"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'province')
+          }"
+          id="province"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'province')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="city" class="form-label">City</label>
+        <input
+          formControlName="city"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': getControlHasError('personalUserForm', 'city')
+          }"
+          id="city"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('personalUserForm', 'city')
+            "
+          ></ng-container>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-3 row g-3" formGroupName="courseForm">
+      <h3>Courses</h3>
+      <div class="col-md-3">
+        <label for="course" class="form-label">Course</label>
+        <input
+          formControlName="course"
+          type="text"
+          class="form-control"
+          id="course"
+          [ngClass]="{
+            'is-invalid': getControlHasError('courseForm', 'course')
+          }"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('courseForm', 'course')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="comission" class="form-label">Comission</label>
+        <input
+          formControlName="comission"
+          type="text"
+          class="form-control"
+          id="comission"
+          [ngClass]="{
+            'is-invalid': getControlHasError('courseForm', 'comission')
+          }"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('courseForm', 'comission')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input
+          formControlName="startDate"
+          type="Date"
+          class="form-control"
+          id="startDate"
+          [ngClass]="{
+            'is-invalid': getControlHasError('courseForm', 'startDate')
+          }"
+        />
+        <div class="invalid-feedback">
+          <ng-container
+            *ngTemplateOutlet="
+              showError;
+              context: getControl('courseForm', 'startDate')
+            "
+          ></ng-container>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="endDate" class="form-label">End Date</label>
+        <input
+          formControlName="endDate"
+          type="Date"
+          class="form-control"
+          id="endDate"
+        />
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input
+            formControlName="scholarship"
+            class="form-check-input"
+            type="checkbox"
+            id="scholarship"
+          />
+          <label class="form-check-label" for="scholarship">
+            Scholarship
+          </label>
+        </div>
+      </div>
+    </section>
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="this.form.invalid"
+      >
+        Submit form
+      </button>
+    </div>
+  </form>
+</div>
+
+<ng-template #requiredError>
+  <span>This field is required</span>
+</ng-template>
+
+<ng-template #showError let-error="errors">
+  <span *ngIf="error?.required">This field is required <br /></span>
+  <span *ngIf="error?.minlength">You need to put more characters <br /></span>
+  <span *ngIf="error?.maxlength">You need to put less characters <br /></span>
+  <span *ngIf="error?.email">The input should be a valid email <br /></span>
+  <span *ngIf="error?.pattern">You can only write numbers in this field</span>
+</ng-template>
