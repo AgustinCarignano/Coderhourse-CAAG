@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 appTitle>Alumns List</h1>
+  <div class="button">
+    <button mat-raised-button color="primary" (click)="openFormDialog()">
+      <mat-icon>add</mat-icon>
+      New Alumn
+    </button>
+  </div>
+  <app-alumns-table
+    #alumnTable
+    [data]="data"
+    (onEdit)="openFormDialog($event)"
+    (onDelete)="openConfirmDialog($event)"
+  ></app-alumns-table>
+</div>
