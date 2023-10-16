@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Alumn } from '../../models/alumn.model';
-import { alumnsData } from 'src/app/mockData/alumns/alumnsData';
+import { alumnsData } from 'src/assets/mockData/alumns/alumnsData';
 
 /**
  * Data source for the AlumnsTable view. This class should
@@ -13,7 +13,6 @@ import { alumnsData } from 'src/app/mockData/alumns/alumnsData';
  */
 export class AlumnsTableDataSource extends DataSource<Alumn> {
   data: Alumn[];
-  // data: Alumn[] = alumnsData.map((a) => new Alumn(a));
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 

@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AlumnsFormComponent } from './components/alumns-form/alumns-form.component';
 import { Alumn } from './models/alumn.model';
-import { alumnsData } from 'src/app/mockData/alumns/alumnsData';
+import { alumnsData } from 'src/assets/mockData/alumns/alumnsData';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AlumnsTableDataSource } from './components/alumns-table/alumns-table-datasource';
 
 @Component({
   selector: 'app-alumns',
   templateUrl: './alumns.component.html',
   styleUrls: ['./alumns.component.scss'],
 })
-export class AlumnsComponent {
-  public data: Alumn[] = [];
+export class AlumnsComponent implements OnInit {
+  public data: Alumn[] = alumnsData.map((a) => new Alumn(a));
+  public dataSource!: AlumnsTableDataSource;
 
-  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {
-    this.data = alumnsData.map((a) => new Alumn(a));
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {}
+
+  public ngOnInit(): void {
+    this.dataSource = new AlumnsTableDataSource(this.data);
   }
 
   public showNotification(message: string): void {
@@ -51,18 +55,21 @@ export class AlumnsComponent {
   private editAlumnList(alumn: Alumn): void {
     let message: string;
     if (alumn.id) {
-      this.data = this.data.map((a) => (a.id === alumn.id ? alumn : a));
+      const data = this.data.map((a) => (a.id === alumn.id ? alumn : a));
+      this.dataSource = new AlumnsTableDataSource(data);
       message = 'Alumn edited';
     } else {
       const newId = this.data[this.data.length - 1].id + 1;
-      this.data = [...this.data, { ...alumn, id: newId }];
+      const data = [...this.data, { ...alumn, id: newId }];
+      this.dataSource = new AlumnsTableDataSource(data);
       message = 'New Alumn added';
     }
     this.showNotification(message);
   }
 
   private deleteAlumn(alumnId: number): void {
-    this.data = this.data.filter((a) => a.id !== alumnId);
+    const data = this.data.filter((a) => a.id !== alumnId);
+    this.dataSource = new AlumnsTableDataSource(data);
     this.showNotification('Alumn deleted');
   }
 }

@@ -5,7 +5,6 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { MatTable } from '@angular/material/table';
@@ -20,15 +19,13 @@ import { Alumn } from '../../models/alumn.model';
   styleUrls: ['./alumns-table.component.scss'],
 })
 export class AlumnsTableComponent implements OnChanges, AfterViewInit {
-  public dataSource!: AlumnsTableDataSource;
+  @Input() public dataSource!: AlumnsTableDataSource;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Alumn>;
-  @Input() public data: Alumn[] = [];
   @Output() public onEdit: EventEmitter<Alumn> = new EventEmitter<Alumn>();
   @Output() public onDelete: EventEmitter<number> = new EventEmitter<number>();
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     'id',
     'fullName',
@@ -39,26 +36,27 @@ export class AlumnsTableComponent implements OnChanges, AfterViewInit {
     'actions',
   ];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.dataSource = new AlumnsTableDataSource(changes['data'].currentValue);
+  public ngOnChanges(): void {
     if (this.table) {
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.table.dataSource = this.dataSource;
+      this.setTableData();
     }
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+  public ngAfterViewInit(): void {
+    this.setTableData();
   }
 
-  editElumn(alumn: Alumn): void {
+  public editElumn(alumn: Alumn): void {
     this.onEdit.emit(alumn);
   }
 
-  deleteAlumn(alumnId: number): void {
+  public deleteAlumn(alumnId: number): void {
     this.onDelete.emit(alumnId);
+  }
+
+  private setTableData(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
   }
 }

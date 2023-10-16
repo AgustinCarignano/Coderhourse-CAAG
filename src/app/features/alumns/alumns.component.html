@@ -7,8 +7,7 @@
     </button>
   </div>
   <app-alumns-table
-    #alumnTable
-    [data]="data"
+    [dataSource]="dataSource"
     (onEdit)="openFormDialog($event)"
     (onDelete)="openConfirmDialog($event)"
   ></app-alumns-table>
