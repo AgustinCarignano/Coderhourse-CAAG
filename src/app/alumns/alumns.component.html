@@ -1,1 +1,33 @@
-<pre>{{ alumns | async | json }}</pre>
+<!-- <pre>{{ alumns$ | async | json }}</pre> -->
+<h1>{{ useMethod | method }}</h1>
+<div [ngSwitch]="useMethod">
+  <ng-container *ngSwitchCase="'pipe'">
+    <ng-container *ngIf="alumns$ | async as alumns; else loading">
+      <app-table [dataSource]="alumns"></app-table>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'subscription'">
+    <ng-container *ngIf="alumnsFromObservable.length; else loading">
+      <app-table [dataSource]="alumnsFromObservable"></app-table>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'promises'">
+    <ng-container *ngIf="alumnsFromPromise.length; else loading">
+      <app-table [dataSource]="alumnsFromPromise"></app-table>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngSwitchDefault
+    >There has been an error. Please, reload the page</ng-container
+  >
+</div>
+
+<ng-template #loading>
+  <mat-progress-spinner
+    diameter="50"
+    class="example-margin"
+    color="accent"
+    mode="indeterminate"
+    style="margin: 200px auto"
+  >
+  </mat-progress-spinner>
+</ng-template>

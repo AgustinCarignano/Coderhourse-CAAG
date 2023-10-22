@@ -1,0 +1,18 @@
+<mat-drawer-container class="my-container" autosize>
+  <mat-drawer #drawer [opened]="showFiller" class="sidenav" mode="side">
+    <mat-nav-list>
+      <a
+        mat-list-item
+        *ngFor="let link of links"
+        [href]="link.href"
+        [activated]="link.isActive"
+        (click)="setMethod(link.method)"
+        >{{ link.label }}</a
+      >
+    </mat-nav-list>
+  </mat-drawer>
+
+  <main class="content">
+    <app-alumns [useMethod]="selectedMethod"></app-alumns>
+  </main>
+</mat-drawer-container>
