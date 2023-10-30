@@ -38,7 +38,8 @@ export class LayoutService {
   public setActivePath(): void {
     const path = this.router.url;
     for (const key in this.navigationLinks) {
-      if (this.navigationLinks[key].href.join('/') === path) {
+      console.log(this.navigationLinks[key].href.join('/').includes(path));
+      if (this.navigationLinks[key].href.join('/').includes(path)) {
         this.navigationLinks[key].isActive = true;
       } else {
         this.navigationLinks[key].isActive = false;

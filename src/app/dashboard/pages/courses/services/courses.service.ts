@@ -15,4 +15,18 @@ export class CoursesService {
   public getCourses(): Observable<Course[]> {
     return of(this.data).pipe(map((data) => data.map((c) => new Course(c))));
   }
+
+  public addCourse(course: Course): Observable<Course[]> {
+    this.data = [...this.data, new APICourse({ ...course, id: this.getId() })];
+    return this.getCourses();
+  }
+
+  public editCourse(course:Course): Observable<Course[]> {
+    this.data = this.data.map(c=> c.id === course.id ? new APICourse(course)  : c)
+    return this.getCourses()
+  }
+
+  private getId(): number {
+    return this.data[this.data.length - 1].id + 1;
+  }
 }

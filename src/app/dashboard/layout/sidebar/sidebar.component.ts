@@ -15,11 +15,10 @@ export class SidebarComponent implements OnChanges {
   drawer!: MatDrawer;
   public navigationLinks = this.layoutService.navigationLinks;
 
-  constructor(private layoutService: LayoutService) {
-    this.layoutService.setActivePath();
-  }
+  constructor(private layoutService: LayoutService) {}
 
   ngOnChanges(): void {
+    this.layoutService.setActivePath();
     if (this.drawer) {
       this.drawer.toggle();
     }

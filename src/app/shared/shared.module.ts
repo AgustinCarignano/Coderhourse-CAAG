@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 // App imports
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { TitleDirective } from './directives/title.directive';
@@ -21,7 +22,7 @@ import { NotificationService } from './services/notification.service';
 const matModules: any[] = [
   MatButtonModule,
   MatIconModule,
-  ReactiveFormsModule,
+  MatCheckboxModule,
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
@@ -36,8 +37,14 @@ const matModules: any[] = [
     FormErrorPipe,
     ConfirmSnackbarComponent,
   ],
-  imports: [CommonModule, ...matModules],
-  exports: [FullNamePipe, TitleDirective, FormErrorPipe, ...matModules],
+  imports: [CommonModule, ReactiveFormsModule, ...matModules],
+  exports: [
+    ReactiveFormsModule,
+    FullNamePipe,
+    TitleDirective,
+    FormErrorPipe,
+    ...matModules,
+  ],
   providers: [NotificationService],
 })
 export class SharedModule {}

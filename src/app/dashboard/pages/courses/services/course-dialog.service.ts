@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AlumnsFormComponent } from '../components/alumns-form/alumns-form.component';
-import { Alumn } from '../models/alumn.model';
 import { Observable } from 'rxjs';
 import { ConfirmSnackbarComponent } from 'src/app/shared/components/confirm-snackbar/confirm-snackbar.component';
+import { Course } from '../models';
+import { CourseFormComponent } from '../components/course-form/course-form.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AlumnsDialogService {
+export class CourseDialogService {
   constructor(private dialog: MatDialog) {}
 
   public openFormDialog(
     title: string,
-    alumn?: Alumn
-  ): Observable<Alumn | undefined> {
+    course?: Course
+  ): Observable<Course | undefined> {
     return this.dialog
-      .open(AlumnsFormComponent, {
+      .open(CourseFormComponent, {
         data: {
           title,
-          alumn,
+          course,
         },
       })
       .afterClosed();

@@ -11,11 +11,16 @@
   <mat-card-content>
     <p>{{ course.description }}</p>
     <span
-      >Next start date: {{ course.nextStartDate | date : "dd/MM/yyyy" }}</span
+      >Next start date:
+      {{
+        course.nextStartDate
+          ? (course.nextStartDate | date : "dd/MM/yyyy")
+          : "Not defined"
+      }}</span
     >
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button (click)="onEditCourse()">EDIT</button>
+    <button mat-button color="primary" [routerLink]="course.id.toString()">ENROLL A STUDENT</button>
   </mat-card-actions>
 </mat-card>

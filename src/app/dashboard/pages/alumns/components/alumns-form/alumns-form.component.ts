@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { AlumnForm } from '../../models/alumns-form.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { AlumnDialog } from '../../models/dialog-data.model';
+import { AlumnDialog } from '../../models/alumn-data.model';
 import { Alumn } from '../../models/alumn.model';
 import { ValidationErrors } from '@angular/forms';
 

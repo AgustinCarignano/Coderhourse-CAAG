@@ -20,12 +20,17 @@ export class AlumnsService {
     );
   }
 
+  public getAlumById(id: number): Observable<Alumn> {
+    const alumn = this.data.find((a) => a.id === id);
+    if (!alumn) throw new Error('404');
+    return of(new Alumn(alumn));
+  }
+
   public addAlumn(alumn: Alumn): Observable<Alumn[]> {
     this.data = [
       ...this.data,
       {
-        ...alumn,
-        birthdate: alumn.birthdate.toISOString(),
+        ...new APIAlumn(alumn),
         id: this.getAlumnId(),
       },
     ];
@@ -34,9 +39,7 @@ export class AlumnsService {
 
   public editAlumn(alumn: Alumn): Observable<Alumn[]> {
     this.data = this.data.map((a) =>
-      a.id === alumn.id
-        ? { ...alumn, birthdate: alumn.birthdate.toISOString() }
-        : a
+      a.id === alumn.id ? new APIAlumn(alumn) : a
     );
     return this.getAlumns();
   }

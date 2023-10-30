@@ -4,7 +4,7 @@ export interface ICourse {
   id: number;
   title: string;
   description: string;
-  nextStartDate: Date;
+  nextStartDate: Date | null;
   imgUrl: string;
   available: boolean;
 }
@@ -13,7 +13,7 @@ export class Course implements ICourse {
   id: number;
   title: string;
   description: string;
-  nextStartDate: Date;
+  nextStartDate: Date | null;
   imgUrl: string;
   available: boolean;
 
@@ -21,7 +21,9 @@ export class Course implements ICourse {
     this.id = course.id;
     this.title = course.title;
     this.description = course.description;
-    this.nextStartDate = new Date(course.nextStartDate);
+    this.nextStartDate = course.nextStartDate
+      ? new Date(course.nextStartDate)
+      : null;
     this.imgUrl = course.imgUrl;
     this.available = course.available;
   }

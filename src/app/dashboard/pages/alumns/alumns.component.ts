@@ -4,7 +4,7 @@ import { AlumnsService } from './services/alumns.service';
 import { Observable } from 'rxjs';
 import { AlumnsDialogService } from './services/alumns-dialog.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { ActionsMessages } from './enums/messages';
+import { ActionsMessages } from '../../../core/enums/messages';
 
 @Component({
   selector: 'app-alumns',
