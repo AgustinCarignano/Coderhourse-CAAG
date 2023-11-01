@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Paths } from '../enums/paths.enum';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +20,8 @@ export class LayoutService {
       isActive: false,
     },
     {
-      label: 'Alumns',
-      href: ['', Paths.DASHBOARD, Paths.ALUMNS],
+      label: 'Students',
+      href: ['', Paths.DASHBOARD, Paths.STUDENTS],
       icon: 'groups',
       isActive: true,
     },
@@ -33,18 +33,24 @@ export class LayoutService {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.setActivePath();
+  }
 
   public setActivePath(): void {
-    const path = this.router.url;
-    for (const key in this.navigationLinks) {
-      console.log(this.navigationLinks[key].href.join('/').includes(path));
-      if (this.navigationLinks[key].href.join('/').includes(path)) {
-        this.navigationLinks[key].isActive = true;
-      } else {
-        this.navigationLinks[key].isActive = false;
-      }
-    }
-    this.navigationLinks = [...this.navigationLinks];
+    this.router.events.subscribe({
+      next: (e) => {
+        if (e instanceof NavigationStart) {
+          for (const key in this.navigationLinks) {
+            if (this.navigationLinks[key].href.join('/').includes(e.url)) {
+              this.navigationLinks[key].isActive = true;
+            } else {
+              this.navigationLinks[key].isActive = false;
+            }
+          }
+          this.navigationLinks = [...this.navigationLinks];
+        }
+      },
+    });
   }
 }

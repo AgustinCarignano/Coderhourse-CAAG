@@ -1,6 +1,5 @@
 <h1 mat-dialog-title>{{ title }}</h1>
 <div mat-dialog-content>
-  <p>Complete this form</p>
   <form [formGroup]="form">
     <div class="row">
       <mat-form-field class="col">
@@ -34,9 +33,23 @@
     </div>
     <div class="row">
       <mat-form-field class="col">
+        <mat-label>Course short description</mat-label>
+        <textarea
+          matInput
+          placeholder="Some short description here (max 150 characters)"
+          formControlName="shortDescription"
+        ></textarea>
+        <mat-error>{{
+          getControlError("shortDescription") | formError
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col">
         <mat-label>Course description</mat-label>
         <textarea
           matInput
+          rows="5"
           placeholder="Some description here..."
           formControlName="description"
         ></textarea>

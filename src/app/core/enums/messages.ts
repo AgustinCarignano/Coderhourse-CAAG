@@ -1,7 +1,7 @@
 export const enum ActionsMessages {
-  addedAlumn = 'New alumn added',
-  editedAlumn = 'Alumn edited',
-  deletedAlumn = 'Alumn deleted',
+  addedStudent = 'New student added',
+  editedStudent = 'Student edited',
+  deletedStudent = 'Student deleted',
   addedCourse = 'New course added',
-  editedCourse = 'Course edited'
+  editedCourse = 'Course edited',
 }

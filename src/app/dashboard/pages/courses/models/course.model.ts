@@ -3,6 +3,7 @@ import { APICourse } from './course-api.model';
 export interface ICourse {
   id: number;
   title: string;
+  shortDescription: string;
   description: string;
   nextStartDate: Date | null;
   imgUrl: string;
@@ -12,6 +13,7 @@ export interface ICourse {
 export class Course implements ICourse {
   id: number;
   title: string;
+  shortDescription: string;
   description: string;
   nextStartDate: Date | null;
   imgUrl: string;
@@ -21,6 +23,7 @@ export class Course implements ICourse {
     this.id = course.id;
     this.title = course.title;
     this.description = course.description;
+    this.shortDescription = course.shortDescription;
     this.nextStartDate = course.nextStartDate
       ? new Date(course.nextStartDate)
       : null;

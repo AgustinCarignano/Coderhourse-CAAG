@@ -13,9 +13,11 @@ const routes: Routes = [
           import('./pages/home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'alumns',
+        path: 'students',
         loadChildren: () =>
-          import('./pages/alumns/alumns.module').then((m) => m.AlumnsModule),
+          import('./pages/students/students.module').then(
+            (m) => m.StudentsModule
+          ),
       },
       {
         path: 'courses',

@@ -18,7 +18,6 @@ export class SidebarComponent implements OnChanges {
   constructor(private layoutService: LayoutService) {}
 
   ngOnChanges(): void {
-    this.layoutService.setActivePath();
     if (this.drawer) {
       this.drawer.toggle();
     }

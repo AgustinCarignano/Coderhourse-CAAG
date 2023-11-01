@@ -3,6 +3,7 @@ import { Course } from './course.model';
 
 export interface CourseFormControls {
   title: FormControl<string | null>;
+  shortDescription: FormControl<string | null>;
   description: FormControl<string | null>;
   nextStartDate: FormControl<Date | null>;
   imgUrl: FormControl<string | null>;
@@ -11,6 +12,10 @@ export interface CourseFormControls {
 
 export class CourseForm {
   title = new FormControl('', [Validators.required]);
+  shortDescription = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(150),
+  ]);
   description = new FormControl('', [Validators.required]);
   nextStartDate = new FormControl<Date | null>(null);
   imgUrl = new FormControl('', [Validators.required]);
@@ -20,6 +25,7 @@ export class CourseForm {
   constructor(data?: Course) {
     this.form = new FormGroup({
       title: this.title,
+      shortDescription: this.shortDescription,
       description: this.description,
       nextStartDate: this.nextStartDate,
       imgUrl: this.imgUrl,
