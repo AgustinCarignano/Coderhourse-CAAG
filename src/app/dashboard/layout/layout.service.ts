@@ -8,27 +8,33 @@ import { NavigationStart, Router } from '@angular/router';
 export class LayoutService {
   public navigationLinks = [
     {
-      label: 'Home',
+      label: Paths.HOME,
       href: ['', Paths.DASHBOARD, Paths.HOME],
       icon: 'home',
       isActive: false,
     },
     {
-      label: 'Users',
+      label: Paths.USERS,
       href: ['', Paths.DASHBOARD, Paths.USERS],
       icon: 'person',
       isActive: false,
     },
     {
-      label: 'Students',
+      label: Paths.STUDENTS,
       href: ['', Paths.DASHBOARD, Paths.STUDENTS],
       icon: 'groups',
       isActive: true,
     },
     {
-      label: 'Courses',
+      label: Paths.COURSES,
       href: ['', Paths.DASHBOARD, Paths.COURSES],
       icon: 'toc',
+      isActive: false,
+    },
+    {
+      label: Paths.ENROLLMENTS,
+      href: ['', Paths.DASHBOARD, Paths.ENROLLMENTS],
+      icon: 'view_agenda',
       isActive: false,
     },
   ];

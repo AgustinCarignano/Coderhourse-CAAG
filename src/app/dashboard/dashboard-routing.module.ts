@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { Paths } from './enums/paths.enum';
 
 const routes: Routes = [
   {
@@ -8,26 +9,33 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'home',
+        path: Paths.HOME,
         loadChildren: () =>
           import('./pages/home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'students',
+        path: Paths.STUDENTS,
         loadChildren: () =>
           import('./pages/students/students.module').then(
             (m) => m.StudentsModule
           ),
       },
       {
-        path: 'courses',
+        path: Paths.COURSES,
         loadChildren: () =>
           import('./pages/courses/courses.module').then((m) => m.CoursesModule),
       },
       {
-        path: 'users',
+        path: Paths.USERS,
         loadChildren: () =>
           import('./pages/users/users.module').then((m) => m.UsersModule),
+      },
+      {
+        path: Paths.ENROLLMENTS,
+        loadChildren: () =>
+          import('./pages/enrollments/enrollments.module').then(
+            (m) => m.EnrollmentsModule
+          ),
       },
       {
         path: '**',

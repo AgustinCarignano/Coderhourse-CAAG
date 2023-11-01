@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Paths } from './dashboard/enums/paths.enum';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: Paths.DASHBOARD,
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: Paths.DASHBOARD,
   },
 ];
 

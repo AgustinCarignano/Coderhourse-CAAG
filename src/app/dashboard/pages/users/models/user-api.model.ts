@@ -1,4 +1,4 @@
-import { UserRol } from '../enums/user-rol.enum';
+import { UserRole } from '../enums/user-role.enum';
 import { IUser } from './user.model';
 
 export interface IAPIUser {
@@ -6,7 +6,7 @@ export interface IAPIUser {
   userName: string;
   email: string;
   password: string;
-  rol: UserRol;
+  role: UserRole;
 }
 
 export class APIUser implements IAPIUser {
@@ -14,13 +14,13 @@ export class APIUser implements IAPIUser {
   userName: string;
   email: string;
   password: string;
-  rol: UserRol;
+  role: UserRole;
 
   constructor(data: IUser) {
     this.id = data.id;
     this.userName = data.userName;
     this.email = data.email;
     this.password = data.password;
-    this.rol = data.rol;
+    this.role = data.role;
   }
 }

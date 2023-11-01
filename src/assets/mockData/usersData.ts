@@ -1,4 +1,4 @@
-import { UserRol } from 'src/app/dashboard/pages/users/enums/user-rol.enum';
+import { UserRol } from 'src/app/dashboard/pages/users/enums/user-role.enum';
 import { APIUser } from 'src/app/dashboard/pages/users/models/user-api.model';
 
 export const usersData: APIUser[] = [
