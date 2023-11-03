@@ -1,5 +1,5 @@
 export enum Paths {
-  AUTH = 'AUTH',
+  AUTH = 'auth',
   LOGIN = 'login',
   REGISTER = 'register',
   DASHBOARD = 'dashboard',

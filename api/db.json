@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$bYdmbqQJ4kPd544Qt4nHXeRze5Rzi6ASDgbhoUVmIdP75lv9c05Yu",
+      "id": 1
+    },
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$euvBLnF3SJzSxhxHejR8aO7yY8mrNNKvnCGE8SctsebIwOyoypqKS",
+      "firstName": "Agustin",
+      "lastName": "Carignano",
+      "role": "admin",
+      "id": 2
+    }
+  ],
+  "students": [
+    {
+      "name": "juan",
+      "last": "otro"
+    }
+  ]
+}

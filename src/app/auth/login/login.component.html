@@ -1,0 +1,17 @@
+<h1>Login</h1>
+<form [formGroup]="form" class="form">
+  <mat-form-field class="form__field">
+    <mat-label> Email </mat-label>
+    <input matInput formControlName="email" type="email" />
+    <mat-error>{{ getControlError("email") | formError }}</mat-error>
+  </mat-form-field>
+  <mat-form-field class="form__field">
+    <mat-label> Password </mat-label>
+    <input matInput formControlName="password" type="password" />
+    <mat-error>{{ getControlError("password") | formError }}</mat-error>
+  </mat-form-field>
+  <div class="form__actions">
+    <a mat-flat-button [routerLink]="['', 'auth', 'register']">Register</a>
+    <button mat-flat-button color="primary" (click)="onLogin()">Login</button>
+  </div>
+</form>
