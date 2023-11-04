@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Student } from './models/student.model';
-import { StudentsService } from './services/student.service';
+// import { StudentsService } from './services/student.service';
 import { Observable } from 'rxjs';
 import { StudentsDialogService } from './services/student-dialog.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ActionsMessages } from '../../../core/enums/messages';
+import { StudentApiService } from './services/student-api.service';
 
 @Component({
   selector: 'app-students',
@@ -15,18 +16,18 @@ export class StudentsComponent {
   public students$: Observable<Student[]>;
 
   constructor(
-    private studentsService: StudentsService,
+    private studentsApiService: StudentApiService,
     private dialogService: StudentsDialogService,
     private notificationService: NotificationService
   ) {
-    this.students$ = this.studentsService.getStudents();
+    this.students$ = this.studentsApiService.getAll();
   }
 
   public newStudent(): void {
     this.dialogService.openFormDialog('New student').subscribe({
       next: (data) => {
         if (data) {
-          this.students$ = this.studentsService.addStudent(data);
+          this.students$ = this.studentsApiService.create(data);
           this.notificationService.showNotification(
             ActionsMessages.addedStudent
           );
@@ -39,7 +40,7 @@ export class StudentsComponent {
     this.dialogService.openFormDialog('Edit student', student).subscribe({
       next: (data) => {
         if (data) {
-          this.students$ = this.studentsService.editStudent(data);
+          this.students$ = this.studentsApiService.update(data.id, data);
           this.notificationService.showNotification(
             ActionsMessages.editedStudent
           );
@@ -52,7 +53,7 @@ export class StudentsComponent {
     this.dialogService.openConfirmDialog().subscribe({
       next: (resp) => {
         if (resp) {
-          this.students$ = this.studentsService.deleteStudent(studentId);
+          this.students$ = this.studentsApiService.delete(studentId);
           this.notificationService.showNotification(
             ActionsMessages.deletedStudent
           );

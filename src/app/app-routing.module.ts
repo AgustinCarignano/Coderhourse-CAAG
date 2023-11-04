@@ -16,10 +16,10 @@ const routes: Routes = [
     canActivate: [hasSessionGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-  {
-    path: '**',
-    redirectTo: Paths.DASHBOARD,
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: Paths.DASHBOARD,
+  // },
 ];
 
 @NgModule({

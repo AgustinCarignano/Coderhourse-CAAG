@@ -16,7 +16,6 @@ import { User } from 'src/app/dashboard/pages/users/models/user.model';
 })
 export class AuthService {
   readonly storageName = 'loggedUser';
-  protected token?: string;
   private base_url = 'http://localhost:3000';
   private _localSotageInfo: BehaviorSubject<AuthResponse | null> =
     new BehaviorSubject<AuthResponse | null>(null);
@@ -63,6 +62,10 @@ export class AuthService {
         }
       )
       .pipe(map((users) => users[0]));
+  }
+
+  public getTokenvalue(): string {
+    return this._localSotageInfo.getValue()?.accessToken || '';
   }
 
   private openSession(info: AuthResponse): void {

@@ -7,24 +7,6 @@
         <input matInput formControlName="title" />
         <mat-error>{{ getControlError("title") | formError }}</mat-error>
       </mat-form-field>
-    </div>
-    <div class="row">
-      <mat-form-field class="col">
-        <mat-label>Next start date</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          formControlName="nextStartDate"
-        />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error>{{
-          getControlError("nextStartDate") | formError
-        }}</mat-error>
-      </mat-form-field>
       <mat-form-field class="col">
         <mat-label>Image URL</mat-label>
         <input matInput formControlName="imgUrl" type="url" />
