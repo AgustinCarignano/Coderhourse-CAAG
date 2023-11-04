@@ -20,14 +20,14 @@ export class StudentsComponent {
     private dialogService: StudentsDialogService,
     private notificationService: NotificationService
   ) {
-    this.students$ = this.studentsApiService.getAll();
+    this.students$ = this.studentsApiService.getStudents();
   }
 
   public newStudent(): void {
     this.dialogService.openFormDialog('New student').subscribe({
       next: (data) => {
         if (data) {
-          this.students$ = this.studentsApiService.create(data);
+          this.students$ = this.studentsApiService.createStudent(data);
           this.notificationService.showNotification(
             ActionsMessages.addedStudent
           );
@@ -40,7 +40,7 @@ export class StudentsComponent {
     this.dialogService.openFormDialog('Edit student', student).subscribe({
       next: (data) => {
         if (data) {
-          this.students$ = this.studentsApiService.update(data.id, data);
+          this.students$ = this.studentsApiService.updateStudent(data);
           this.notificationService.showNotification(
             ActionsMessages.editedStudent
           );
@@ -53,7 +53,7 @@ export class StudentsComponent {
     this.dialogService.openConfirmDialog().subscribe({
       next: (resp) => {
         if (resp) {
-          this.students$ = this.studentsApiService.delete(studentId);
+          this.students$ = this.studentsApiService.deleteStudent(studentId);
           this.notificationService.showNotification(
             ActionsMessages.deletedStudent
           );

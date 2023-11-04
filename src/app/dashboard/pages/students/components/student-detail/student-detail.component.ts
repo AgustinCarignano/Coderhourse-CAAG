@@ -18,6 +18,6 @@ export class StudentDetailComponent {
     private router: ActivatedRoute
   ) {
     const id: string = this.router.snapshot.params['id'];
-    if (id) this.student$ = this.studentApiService.getOne(Number(id));
+    if (id) this.student$ = this.studentApiService.getOneStudent(Number(id));
   }
 }

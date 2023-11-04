@@ -21,7 +21,7 @@ export class CoursesComponent implements OnDestroy {
     private dialogService: CourseDialogService,
     private notificationService: NotificationService
   ) {
-    this.courses$ = this.courseApiService.getAll();
+    this.courses$ = this.courseApiService.getCourses();
   }
 
   public newCourse(): void {
@@ -31,7 +31,7 @@ export class CoursesComponent implements OnDestroy {
       .subscribe({
         next: (data) => {
           if (data) {
-            this.courses$ = this.courseApiService.create(data);
+            this.courses$ = this.courseApiService.createCourse(data);
             this.notificationService.showNotification(
               ActionsMessages.addedCourse
             );
@@ -47,7 +47,7 @@ export class CoursesComponent implements OnDestroy {
       .subscribe({
         next: (data) => {
           if (data) {
-            this.courses$ = this.courseApiService.update(data.id, data);
+            this.courses$ = this.courseApiService.updateCourse(data);
             this.notificationService.showNotification(
               ActionsMessages.editedCourse
             );

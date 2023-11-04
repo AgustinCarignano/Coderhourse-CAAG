@@ -6,7 +6,7 @@ export abstract class HttpService<T> {
   constructor(
     protected _http: HttpClient,
     protected _baseUrl: string,
-    private authService: AuthService
+    protected authService: AuthService
   ) {}
 
   getAll(): Observable<T[]> {
@@ -16,11 +16,10 @@ export abstract class HttpService<T> {
   }
 
   getOne(id: number): Observable<T> {
-    return this._http
-      .get<T[]>(this._baseUrl + '/' + id, {
-        headers: this.getHeaders(),
-      })
-      .pipe(map((resp) => resp[0]));
+    return this._http.get<T>(this._baseUrl + '/' + id, {
+      headers: this.getHeaders(),
+    });
+    // .pipe(map((resp) => resp[0]));
   }
 
   update(id: number, data: T): Observable<T[]> {
