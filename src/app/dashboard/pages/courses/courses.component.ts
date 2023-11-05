@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { CoursesService } from './services/courses.service';
-import { Course } from './models/course.model';
+import { Course } from './models';
 import { CourseDialogService } from './services/course-dialog.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ActionsMessages } from 'src/app/core/enums/messages';

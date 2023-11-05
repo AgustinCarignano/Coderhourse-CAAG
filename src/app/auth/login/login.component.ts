@@ -12,7 +12,10 @@ export class LoginComponent {
   public form: FormGroup<LoginFormControls>;
 
   constructor(private authsrevice: AuthService) {
-    this.form = new LoginForm().form;
+    this.form = new LoginForm({
+      email: 'admin@admin.com',
+      password: 'admin12345',
+    }).form;
   }
 
   public onLogin(): void {

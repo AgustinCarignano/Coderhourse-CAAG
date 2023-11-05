@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, tap, concatMap } from 'rxjs';
+import { Observable, map, tap, concatMap, catchError } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 export abstract class HttpService<T> {
@@ -9,8 +9,9 @@ export abstract class HttpService<T> {
     protected authService: AuthService
   ) {}
 
-  getAll(): Observable<T[]> {
-    return this._http.get<T[]>(this._baseUrl, {
+  getAll(query?: string): Observable<T[]> {
+    let url = query ? `${this._baseUrl}?${query}` : this._baseUrl;
+    return this._http.get<T[]>(url, {
       headers: this.getHeaders(),
     });
   }
@@ -19,7 +20,6 @@ export abstract class HttpService<T> {
     return this._http.get<T>(this._baseUrl + '/' + id, {
       headers: this.getHeaders(),
     });
-    // .pipe(map((resp) => resp[0]));
   }
 
   update(id: number, data: T): Observable<T[]> {

@@ -16,7 +16,8 @@
   ],
   "students": [
     {
-      "firstName": "Robinsons",
+      "id": 1,
+      "firstName": "Robinson",
       "lastName": "Joannic",
       "birthdate": "2011-05-10T00:00:00.000Z",
       "dni": "21779196",
@@ -24,8 +25,7 @@
       "phoneNumber": "808-236-3618",
       "country": "United States",
       "province": "Hawaii",
-      "city": "Honolulu",
-      "id": 1
+      "city": "Honolulu"
     },
     {
       "id": 2,
@@ -614,6 +614,18 @@
       "country": "United States",
       "province": "California",
       "city": "Berkeley"
+    },
+    {
+      "firstName": "Agustin",
+      "lastName": "Carignano",
+      "birthdate": "1991-03-20T23:00:00.000Z",
+      "dni": "35643530",
+      "email": "agustin.carignano@gmail.com",
+      "phoneNumber": "621065317",
+      "country": "España",
+      "province": "A Coruña",
+      "city": "A Coruña",
+      "id": 51
     }
   ],
   "courses": [
@@ -689,5 +701,6 @@
       "imgUrl": "https://www.phpconference.com.ar/wp-content/uploads/2021/02/lenguaje-de-programacion-php-1.jpg",
       "available": true
     }
-  ]
+  ],
+  "editions": []
 }

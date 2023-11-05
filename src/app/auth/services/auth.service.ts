@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
 import {
   AuthResponse,
   LoginRequest,
@@ -82,11 +82,19 @@ export class AuthService {
     const item = localStorage.getItem(this.storageName);
     if (item) {
       this.openSession(JSON.parse(item));
+      this.getLoggedUser().subscribe({
+        error: (err) => {
+          if (err.status === 401) {
+            this.destroySession();
+          }
+        },
+      });
     }
   }
 
   private destroySession(): void {
     localStorage.removeItem(this.storageName);
     this._localSotageInfo.next(null);
+    this.router.createUrlTree([Paths.AUTH]);
   }
 }

@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoursesComponent } from './courses.component';
-import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 
 const routes: Routes = [
   { path: '', component: CoursesComponent },
-  { path: ':id', component: CourseDetailComponent },
+  {
+    path: 'details/:id',
+    loadChildren: () =>
+      import('./components/course-details/course-details.module').then(
+        (m) => m.CourseDetailsModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -6,16 +6,17 @@ import { CourseCardComponent } from './components/card/course-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CourseFormComponent } from './components/course-form/course-form.component';
 import { CourseDialogService } from './services/course-dialog.service';
-import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { EditionFormComponent } from './components/edition-form/edition-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     CoursesComponent,
     CourseCardComponent,
     CourseFormComponent,
-    CourseDetailComponent,
+    EditionFormComponent,
   ],
-  imports: [CommonModule, SharedModule, CoursesRoutingModule],
+  imports: [CommonModule, SharedModule, CoursesRoutingModule, MatSelectModule],
   providers: [CourseDialogService],
 })
 export class CoursesModule {}
