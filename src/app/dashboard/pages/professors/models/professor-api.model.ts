@@ -1,8 +1,8 @@
-import { Person } from 'src/app/dashboard/commons/person/models/person.model';
-import { APIProfesor } from './profesor-api.model';
+import { APIPerson } from 'src/app/dashboard/commons/person/models/person.model';
+import { Professor } from './professor.model';
 
-export class Profesor implements Person {
-  birthdate: Date;
+export class APIProfessor implements APIPerson {
+  birthdate: string;
   id: number;
   firstName: string;
   lastName: string;
@@ -13,8 +13,8 @@ export class Profesor implements Person {
   province: string;
   city: string;
 
-  constructor(data: APIProfesor) {
-    this.birthdate = new Date(data.birthdate);
+  constructor(data: Professor) {
+    this.birthdate = data.birthdate.toISOString();
     this.id = data.id;
     this.firstName = data.firstName;
     this.lastName = data.lastName;

@@ -40,8 +40,8 @@ const routes: Routes = [
       {
         path: Paths.PROFESORS,
         loadChildren: () =>
-          import('./pages/profesors/profesors.module').then(
-            (m) => m.ProfesorsModule
+          import('./pages/professors/professors.module').then(
+            (m) => m.ProfessorsModule
           ),
       },
       {

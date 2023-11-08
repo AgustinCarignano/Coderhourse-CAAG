@@ -450,8 +450,16 @@
       "available": true
     }
   ],
-  "editions": [],
-  "profesors": [
+  "editions": [
+    {
+      "courseId": 1,
+      "professorId": 2,
+      "startDate": "2023-11-19T23:00:00.000Z",
+      "endDate": "2023-12-28T23:00:00.000Z",
+      "id": 1
+    }
+  ],
+  "professors": [
     {
       "birthdate": "2015-09-12T00:00:00.000Z",
       "id": 1,

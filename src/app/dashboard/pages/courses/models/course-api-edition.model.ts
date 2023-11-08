@@ -3,7 +3,7 @@ import { ICourseEdition } from './course-editions.model';
 export interface IAPICourseEdition {
   id: number;
   courseId: number;
-  profesorId: number;
+  professorId: number;
   startDate: string;
   endDate: string;
 }
@@ -11,14 +11,14 @@ export interface IAPICourseEdition {
 export class APICourseEdition implements IAPICourseEdition {
   id: number;
   courseId: number;
-  profesorId: number;
+  professorId: number;
   startDate: string;
   endDate: string;
 
   constructor(data: ICourseEdition) {
     this.id = data.id;
     this.courseId = data.courseId;
-    this.profesorId = data.profesorId;
+    this.professorId = data.professorId;
     this.startDate = data.startDate.toISOString();
     this.endDate = data.endDate.toISOString();
   }

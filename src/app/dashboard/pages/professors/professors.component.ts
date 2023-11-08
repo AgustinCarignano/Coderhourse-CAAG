@@ -1,68 +1,73 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Profesor } from './models';
-import { ProfesorsApiService } from './services/profesors-api.service';
+import { Professor } from './models';
+import { ProfessorsApiService } from './services/professors-api.service';
 import { PersonDialogService } from '../../commons/person/services/person-dialog.service';
 import { PersonForm } from '../../commons/person/models/person-form.model';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { ActionsMessages } from 'src/app/core/enums/messages';
 
 @Component({
-  selector: 'app-profesors',
-  templateUrl: './profesors.component.html',
-  styleUrls: ['./profesors.component.scss'],
+  selector: 'app-professors',
+  templateUrl: './professors.component.html',
+  styleUrls: ['./professors.component.scss'],
 })
-export class ProfesorsComponent {
-  public pageTitle = 'Profesors list';
-  public buttonLabel = 'new profesor';
-  public profesors$: Observable<Profesor[]>;
+export class ProfessorsComponent {
+  public pageTitle = 'Professors list';
+  public buttonLabel = 'new professor';
+  public professors$: Observable<Professor[]>;
 
   constructor(
-    private profesorsApiService: ProfesorsApiService,
+    private professorsApiService: ProfessorsApiService,
     private dialogService: PersonDialogService,
     private notificationService: NotificationService
   ) {
-    this.profesors$ = this.profesorsApiService.getProfesors();
+    this.professors$ = this.professorsApiService.getProfessors();
   }
 
-  public newProfesor(): void {
+  public newProfessor(): void {
     this.dialogService
       .openFormDialog('New professor', new PersonForm().form)
       .subscribe({
         next: (data) => {
           if (data) {
-            this.profesors$ = this.profesorsApiService.createProfesor(data);
+            this.professors$ = this.professorsApiService.createProfessor(data);
             this.notificationService.showNotification(
-              ActionsMessages.addedProfesor
+              ActionsMessages.addedProfessor
             );
           }
         },
       });
   }
 
-  public editProfesor(profesor: Profesor): void {
-    console.log(profesor);
+  public editProfessor(professor: Professor): void {
+    console.log(professor);
     this.dialogService
-      .openFormDialog('New professor', new PersonForm(profesor).form, profesor)
+      .openFormDialog(
+        'New professor',
+        new PersonForm(professor).form,
+        professor
+      )
       .subscribe({
         next: (data) => {
           if (data) {
-            this.profesors$ = this.profesorsApiService.updateProfesor(data);
+            this.professors$ = this.professorsApiService.updateProfessor(data);
             this.notificationService.showNotification(
-              ActionsMessages.editedProfesor
+              ActionsMessages.editedProfessor
             );
           }
         },
       });
   }
 
-  public deleteProfesor(profesorId: number): void {
+  public deleteProfessor(professorId: number): void {
     this.dialogService.openConfirmDialog().subscribe({
       next: (resp) => {
         if (resp) {
-          this.profesors$ = this.profesorsApiService.deleteProfesor(profesorId);
+          this.professors$ =
+            this.professorsApiService.deleteProfessor(professorId);
           this.notificationService.showNotification(
-            ActionsMessages.deletedProfesor
+            ActionsMessages.deletedProfessor
           );
         }
       },

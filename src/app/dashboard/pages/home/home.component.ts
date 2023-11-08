@@ -5,7 +5,7 @@ import { CoursesService } from '../courses/services/courses.service';
 import { HomeCardText } from './enums/home-card.enum';
 import { Paths } from '../../enums/paths.enum';
 import { StudentsService } from '../students/services/student.service';
-import { ProfesorsService } from '../profesors/services/profesors.service';
+import { ProfessorsService } from '../professors/services/professors.service';
 import { BasicEntityService } from 'src/app/core/models/BasicEntityService.model';
 
 @Component({
@@ -24,8 +24,8 @@ export class HomeComponent {
     HomeCardText.STUDENT_TITLE,
     Paths.STUDENTS
   );
-  public profesorsData$: Observable<HomeCardData> = this.getData(
-    this.profesorservice,
+  public professorsData$: Observable<HomeCardData> = this.getData(
+    this.professorservice,
     HomeCardText.PROFESOR_TITLE,
     Paths.PROFESORS
   );
@@ -33,7 +33,7 @@ export class HomeComponent {
   constructor(
     private courseService: CoursesService,
     private studentService: StudentsService,
-    private profesorservice: ProfesorsService
+    private professorservice: ProfessorsService
   ) {}
 
   // public getCourseData(): Observable<HomeCardData> {
@@ -56,8 +56,8 @@ export class HomeComponent {
   //   );
   // }
 
-  // public getProfesorData(): Observable<HomeCardData> {
-  //   return this.profesorservice.getProfesorsQuantity().pipe(
+  // public getProfessorData(): Observable<HomeCardData> {
+  //   return this.professorservice.getProfessorsQuantity().pipe(
   //     map((q) => ({
   //       title: HomeCardText.PROFESOR_TITLE,
   //       content: q,

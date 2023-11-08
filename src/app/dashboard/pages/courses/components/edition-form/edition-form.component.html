@@ -3,12 +3,17 @@
   <form [formGroup]="form">
     <div class="row">
       <mat-form-field>
-        <mat-label>Choose an option</mat-label>
-        <mat-select formControlName="profesorId">
-          <mat-option [value]="1">Option 1</mat-option>
-          <mat-option [value]="2" disabled>Option 2 (disabled)</mat-option>
-          <mat-option [value]="3">Option 3</mat-option>
+        <mat-label>Assign a professor</mat-label>
+        <mat-select formControlName="professorId">
+          <mat-option
+            *ngFor="let professor of professors$ | async"
+            [value]="professor.id"
+            >{{ professor | fullName }}</mat-option
+          >
+          <!-- <mat-option [value]="2" disabled>Option 2 (disabled)</mat-option>
+          <mat-option [value]="3">Option 3</mat-option> -->
         </mat-select>
+        <mat-error>{{ form | getError : "professorId" | showError }}</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
