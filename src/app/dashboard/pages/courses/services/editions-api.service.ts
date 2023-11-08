@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment.local';
   providedIn: 'root',
 })
 export class EditionsApiService extends HttpService<APICourseEdition> {
-  constructor(http: HttpClient, auth: AuthService) {
-    super(http, environment.baseUrl + '/editions', auth);
+  constructor(injector: Injector) {
+    super(environment.baseUrl + '/editions', injector);
   }
 
   getEditionsByCourseId(courseId: number): Observable<CourseEdition[]> {

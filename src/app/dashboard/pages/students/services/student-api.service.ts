@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
@@ -11,8 +11,8 @@ import { APIStudent } from '../models/student-api.model';
   providedIn: 'root',
 })
 export class StudentApiService extends HttpService<APIStudent> {
-  constructor(http: HttpClient, auth: AuthService) {
-    super(http, environment.baseUrl + '/students', auth);
+  constructor(injector: Injector) {
+    super(environment.baseUrl + '/students', injector);
   }
 
   getStudents(): Observable<Student[]> {

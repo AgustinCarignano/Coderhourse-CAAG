@@ -95,6 +95,6 @@ export class AuthService {
   private destroySession(): void {
     localStorage.removeItem(this.storageName);
     this._localSotageInfo.next(null);
-    this.router.createUrlTree([Paths.AUTH]);
+    // this.router.createUrlTree([Paths.AUTH]);
   }
 }
