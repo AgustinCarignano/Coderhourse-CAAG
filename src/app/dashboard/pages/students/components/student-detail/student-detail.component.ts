@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { StudentsService } from '../../services/student.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Student } from '../../models/student.model';
@@ -11,7 +10,8 @@ import { StudentApiService } from '../../services/student-api.service';
   styleUrls: ['./student-detail.component.scss'],
 })
 export class StudentDetailComponent {
-  public student$!: Observable<Student>;
+  public student$?: Observable<Student>;
+  public pageTitle = 'Student details';
 
   constructor(
     private studentApiService: StudentApiService,

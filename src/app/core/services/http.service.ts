@@ -9,20 +9,20 @@ export abstract class HttpService<T> {
     protected authService: AuthService
   ) {}
 
-  getAll(query?: string): Observable<T[]> {
+  protected getAll(query?: string): Observable<T[]> {
     let url = query ? `${this._baseUrl}?${query}` : this._baseUrl;
     return this._http.get<T[]>(url, {
       headers: this.getHeaders(),
     });
   }
 
-  getOne(id: number): Observable<T> {
+  protected getOne(id: number): Observable<T> {
     return this._http.get<T>(this._baseUrl + '/' + id, {
       headers: this.getHeaders(),
     });
   }
 
-  update(id: number, data: T): Observable<T[]> {
+  protected update(id: number, data: T): Observable<T[]> {
     return this._http
       .put<T>(this._baseUrl + '/' + id, data, {
         headers: this.getHeaders(),
@@ -30,7 +30,7 @@ export abstract class HttpService<T> {
       .pipe(concatMap(() => this.getAll()));
   }
 
-  create(data: T): Observable<T[]> {
+  protected create(data: T): Observable<T[]> {
     return this._http
       .post<T[]>(this._baseUrl, data, {
         headers: this.getHeaders(),
@@ -38,7 +38,7 @@ export abstract class HttpService<T> {
       .pipe(concatMap(() => this.getAll()));
   }
 
-  delete(id: number): Observable<T[]> {
+  protected delete(id: number): Observable<T[]> {
     return this._http
       .delete<void>(this._baseUrl + '/' + id, {
         headers: this.getHeaders(),

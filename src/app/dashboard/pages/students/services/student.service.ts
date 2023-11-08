@@ -9,6 +9,6 @@ export class StudentsService {
   constructor(private studentsApiService: StudentApiService) {}
 
   public getStudentsQuantity(): Observable<number> {
-    return this.studentsApiService.getAll().pipe(map((s) => s.length));
+    return this.studentsApiService.getStudents().pipe(map((s) => s.length));
   }
 }

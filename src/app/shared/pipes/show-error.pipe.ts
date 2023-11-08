@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 
 @Pipe({
-  name: 'formError',
+  name: 'showError',
 })
-export class FormErrorPipe implements PipeTransform {
+export class ShowErrorPipe implements PipeTransform {
   private requiredError = 'This field is required';
   private emailError = 'Must provide a valid email';
   private maxLengthError = (n: number) =>

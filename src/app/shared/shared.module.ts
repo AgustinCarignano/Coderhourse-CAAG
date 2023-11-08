@@ -16,9 +16,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 // App imports
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { TitleDirective } from './directives/title.directive';
-import { FormErrorPipe } from './pipes/form-error.pipe';
+import { ShowErrorPipe } from './pipes/show-error.pipe';
 import { ConfirmSnackbarComponent } from './components/confirm-snackbar/confirm-snackbar.component';
 import { NotificationService } from './services/notification.service';
+import { AgePipe } from './pipes/age.pipe';
+import { GetErrorPipe } from './pipes/get-error.pipe';
 
 const matModules: any[] = [
   MatButtonModule,
@@ -36,15 +38,19 @@ const matModules: any[] = [
   declarations: [
     FullNamePipe,
     TitleDirective,
-    FormErrorPipe,
+    ShowErrorPipe,
+    AgePipe,
     ConfirmSnackbarComponent,
+    GetErrorPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule, ...matModules],
   exports: [
     ReactiveFormsModule,
     FullNamePipe,
     TitleDirective,
-    FormErrorPipe,
+    ShowErrorPipe,
+    AgePipe,
+    GetErrorPipe,
     ...matModules,
   ],
   providers: [NotificationService],

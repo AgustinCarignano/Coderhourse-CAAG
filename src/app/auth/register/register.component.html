@@ -3,22 +3,22 @@
   <mat-form-field class="form__field">
     <mat-label> First Name </mat-label>
     <input matInput formControlName="firstName" type="text" />
-    <mat-error>{{ getControlError("firstName") | formError }}</mat-error>
+    <mat-error>{{ form | getError : "firstName" | showError }}</mat-error>
   </mat-form-field>
   <mat-form-field class="form__field">
     <mat-label> Last Name </mat-label>
     <input matInput formControlName="lastName" type="text" />
-    <mat-error>{{ getControlError("lastName") | formError }}</mat-error>
+    <mat-error>{{ form | getError : "lastName" | showError }}</mat-error>
   </mat-form-field>
   <mat-form-field class="form__field">
     <mat-label> Email </mat-label>
     <input matInput formControlName="email" type="email" />
-    <mat-error>{{ getControlError("email") | formError }}</mat-error>
+    <mat-error>{{ form | getError : "email" | showError }}</mat-error>
   </mat-form-field>
   <mat-form-field class="form__field">
     <mat-label> Password </mat-label>
     <input matInput formControlName="password" type="password" />
-    <mat-error>{{ getControlError("password") | formError }}</mat-error>
+    <mat-error>{{ form | getError : "password" | showError }}</mat-error>
   </mat-form-field>
   <div class="form__actions">
     <a mat-flat-button [routerLink]="['', 'auth', 'login']">Login</a>

@@ -1,0 +1,8 @@
+<app-person
+  [title]="pageTitle"
+  [addButtonLabel]="buttonLabel"
+  [persons$]="profesors$"
+  (onAdd)="newProfesor()"
+  (onEdit)="editProfesor($event)"
+  (onDelete)="deleteProfesor($event)"
+></app-person>

@@ -8,6 +8,7 @@ export enum Paths {
   STUDENTS = 'students',
   COURSES = 'courses',
   ENROLLMENTS = 'enrollments',
+  PROFESORS = 'profesors',
   DETAILS = 'details',
   ID = ':id',
 }
